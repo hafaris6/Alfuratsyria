@@ -4,7 +4,15 @@
 <form method="post" enctype="multipart/form-data">
     اسم المنتج: <input name="name"><br>
     السعر: <input name="price"><br>
-    رقم واتساب (بدون +): <input name="whatsapp"><br>
+    رقم واتساب (): <input name="whatsapp"><br>
     صورة المنتج: <input type="file" name="image"><br>
     <button type="submit">إضافة المنتج</button>
 </form>
+@app.route('/dashboard', methods=['GET', 'POST'])
+def dashboard():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    if request.method == 'POST':
+        print(request.form)  # طباعة بيانات النموذج
+        print(request.files) # طباعة الملفات المرفوعة
+        ...
