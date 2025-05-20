@@ -1,10 +1,28 @@
-sooq_alfurat/
-├── app.py
-├── templates/
-│   ├── index.html
-│   ├── register.html
-│   ├── login.html
-│   ├── dashboard.html
-├── static/
-│   └── uploads/        ← صور المنتجات
-├── requirements.txt
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>سوق الفرات</title>
+</head>
+<body>
+    <h1>مرحبًا بك في سوق الفرات</h1>
+
+    <p>
+        <a href="{{ url_for('login') }}">تسجيل الدخول للتجّار</a> |
+        <a href="{{ url_for('register') }}">تسجيل جديد</a>
+    </p>
+
+    <hr>
+
+    <h2>المنتجات المتاحة</h2>
+    {% for product in products %}
+        <div>
+            <h3>{{ product.name }}</h3>
+            <p>السعر: {{ product.price }}</p>
+            <img src="{{ url_for('static', filename='uploads/' ~ product.image) }}" alt="صورة المنتج" width="150">
+            <p><a href="https://wa.me/{{ product.whatsapp }}" target="_blank">تواصل عبر واتساب</a></p>
+            <hr>
+        </div>
+    {% endfor %}
+</body>
+</html>
