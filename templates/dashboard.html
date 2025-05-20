@@ -16,3 +16,6 @@ def dashboard():
         print(request.form)  # طباعة بيانات النموذج
         print(request.files) # طباعة الملفات المرفوعة
         ...
+image = request.files['image']
+filename = secure_filename(image.filename)
+image.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
