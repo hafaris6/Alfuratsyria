@@ -1,0 +1,10 @@
+sooq_alfurat/
+├── app.py
+├── templates/
+│   ├── index.html
+│   ├── register.html
+│   ├── login.html
+│   ├── dashboard.html
+├── static/
+│   └── uploads/        ← صور المنتجات
+├── requirements.txt
