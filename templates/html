@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>سوق الفرات</title>
+</head>
+<body>
+    <h1>مرحبا بك في سوق الفرات</h1>
+    <a href="/login">تسجيل الدخول للتجّار</a> |
+    <a href="/register">تسجيل جديد</a>
+    <hr>
+    {% for product in products %}
+        <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+            <img src="{{ url_for('static', filename='uploads/' + product.image) }}" width="150">
+            <h2>{{ product.name }}</h2>
+            <p>السعر: {{ product.price }} $</p>
+            <a href="https://wa.me/{{ product.whatsapp }}" target="_blank">تواصل عبر واتساب</a>
+            <p>تمت الإضافة بواسطة: {{ product.owner }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>
