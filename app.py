@@ -1,14 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-from gunicorn app:app import secure_filename
+from werkzeug.utils import secure_filename
 import os
 
 app = Flask(__name__)
 app.secret_key = 'secret'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
-# بيانات مؤقتة
-users = {}  # {اسم المستخدم: كلمة السر}
-products = []  # قائمة المنتجات
+# بيانات مؤقتة (تُفقد عند إيقاف السيرفر)
+users = {}         # {اسم المستخدم: كلمة السر}
+products = []      # قائمة المنتجات
 
 @app.route('/')
 def index():
@@ -57,3 +57,6 @@ def dashboard():
 def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
