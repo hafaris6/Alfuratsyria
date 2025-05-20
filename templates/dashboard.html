@@ -7,7 +7,11 @@
     رقم واتساب (): <input name="whatsapp"><br>
     صورة المنتج: <input type="file" name="image"><br>
     <button type="submit">إضافة المنتج</button>
-</form>
+</form>mkdir -p static/uploads
+touch static/uploads/.gitkeep
+git add static/uploads/.gitkeep
+git commit -m "Add uploads directory"
+git push
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
     if 'username' not in session:
